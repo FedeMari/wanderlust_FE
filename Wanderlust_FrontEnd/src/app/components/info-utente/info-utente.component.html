@@ -1,0 +1,197 @@
+<section id="wrapper">
+  <div id="inner-wrapper" class="container">
+    <div id="content-wrapper" class="js-content-wrapper">
+      <section id="main">
+        <div id="content" class="page-content">
+
+          <header class="page-header">
+            <h1 class="h1 page-title">
+              <span>Il tuo account</span>
+            </h1>
+          </header>
+
+          <section id="content" class="page-content my-account-page-content-wrapper">
+
+            <div class="row">
+
+              <div class="my-account-side-links col-sm-3">
+                
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" (click)="infoAccount()" style="cursor: pointer; padding-bottom: 20px">
+                  <span class="link-item">
+                    <!-- L'attributo aria-hidden="true" viene applicato all'elemento <i> che rappresenta l'icona "utente". Questo indica che l'icona non è rilevante per l'accessibilità e che gli assistenti virtuali possono ignorarla. -->
+                    <i class="fa fa-user fa-fw" aria-hidden="true" style="display: inline;"></i>
+                    <span class="link-text-info">Informazioni</span>
+                  </span>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" (click)="wantToDeleteAccount()" style="cursor: pointer;">
+                  <span class="link-item">
+                    <i class="fa fa-trash fa-fw" aria-hidden="true"></i>
+                    <span class="link-text-delete">Elimina Account</span>
+                  </span>
+                </div>
+
+              </div>
+
+              <div class="my-account-page-content col-sm-9">
+
+                <h2 style="font-size: 1rem;">I tuoi dati personali</h2>
+
+                <form action="#" id="user-form" class="js-user-form" method="post" data-gtm-form-interact-id="0">
+                  
+                  <div>
+                    <div class="form-group row align-items-center" >
+                      <label class="col-md-2 col-form-label" for="field-id_gender" >
+                        Titolo sociale
+                      </label>
+                      <div class="col-md-8 form-control-valign">
+                        <label class="radio-inline">
+                          <span class="custom-radio">
+                            <input name="id_gender" type="radio" value="1" checked="" />
+                            <span></span>
+                          </span>
+                          Sig.
+                        </label>
+                        <label class="radio-inline">
+                          <span class="custom-radio">
+                            <input name="id_gender" type="radio" value="2" />
+                            <span></span>
+                          </span>
+                          Sig.ra
+                        </label>
+                      </div>
+                      <div class="col-md-2 form-control-comment"></div>
+                    </div>
+
+                    <div class="form-group row align-items-center">
+                      <label class="col-md-2 col-form-label required" for="field-firstname" >
+                        Nome
+                      </label>
+                      <div class="col-md-8">
+                        <input type="nome" class="form-control" id="field-Nome" placeholder="Nome" required [(ngModel)]="utente.nome" name="nome"  value="utente.nome"  />
+                      </div>
+                    </div>
+                    
+                    <div class="form-group row align-items-center">
+                      <label class="col-md-2 col-form-label required" for="field-lastname" >
+                        Cognome
+                      </label>
+                      <div class="col-md-8">
+                        <input type="cognome" class="form-control" id="field-Cognome" placeholder="Cognome" required [(ngModel)]="utente.cognome" name="cognome" value="utente.cognome" />
+                      </div>
+                    </div>
+                    
+                    <div class="form-group row align-items-center">
+                      <label class="col-md-2 col-form-label required" for="field-email" >
+                        E-mail
+                      </label>
+                      <div class="col-md-8">
+                        <input type="email" class="form-control" id="field-Email" placeholder="Email" 
+                        required [(ngModel)]="utente.email" name="email"  value="utente.email" [readonly]="true" />
+                      </div>
+                      <div class="col-md-2 form-control-comment"></div>
+                    </div>
+                    
+                    <div class="form-group row align-items-center">
+                      <label class="col-md-2 col-form-label required" for="field-password" >
+                        Password
+                      </label>
+                      <div class="col-md-8">
+                        <div class="input-group js-parent-focus">
+                          <!-- Qui colleghiamo il campo della password all'occhio -->
+                          <input [attr.type]="showPassword ? 'utente.password' : 'password'"  class="form-control js-child-focus js-visible-password" 
+                          id="field-Password" placeholder="Password" required [(ngModel)]="utente.password" name="password"  
+                          [readonly]="true" value="utente.password" />                          
+                          <span class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()" >
+                              <i class="fa" [class.fa-eye-slash]="!showPassword" [class.fa-eye]="showPassword" aria-hidden="true"></i>
+                            </button>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-md-2 form-control-comment"></div>
+                    </div>
+                    
+                    <div class="form-group row align-items-center">
+                      <label class="col-md-2 col-form-label" for="field-new_password" >
+                        Nuova password
+                      </label>
+                      <div class="col-md-8">
+                        <div class="input-group js-parent-focus">
+                          <!-- Qui colleghiamo il campo della password all'occhio -->
+                          <input [attr.type]="showNewPassword ? 'text' : 'password'"  class="form-control" id="field-NewPassword" [(ngModel)]="utente.newPassword" name="newPassword" />                          
+                          <span class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" (click)="toggleNewPasswordVisibility()" >
+                              <i class="fa" [class.fa-eye-slash]="!showNewPassword" [class.fa-eye]="showNewPassword" aria-hidden="true"></i>
+                            </button>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-2 form-control-comment">
+                        (Opzionale)
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  
+                  <footer class="form-footer text-center clearfix">
+                    <input type="hidden" name="submitCreate" value="1" />
+                      <button class="btn btn-primary form-control-submit" type="submit" value="update" (click)="updateUser()">
+                        Salva
+                      </button>
+
+                      <div class="error-message" [ngStyle]="{ 'display': showSecondErrorMessage ? 'block' : 'none' }">
+                        ATTENZIONE: 
+                        La mail inserita non è valida o risulta già presente nel sistema, si prega di riprovare.
+                      </div>
+                      <div class="error-message" [ngStyle]="{ 'display': showErrorMessage ? 'block' : 'none' }">
+                        ATTENZIONE:
+                        La password inserita deve contenere almeno 5 caratteri e il campo non deve essere vuoto, si prega di riprovare.
+                      </div>
+                      <div class="registration-message" [ngStyle]="{ 'display': showMessage ? 'block' : 'none' }">
+                        Aggiornamento avvenuto con successo.
+                      </div>
+                  </footer>
+
+                </form>
+              </div>
+
+              <!-- Sicuro di voler eliminare l'account? -->
+
+              <div class="deleting" *ngIf="disattivaAccount">
+                <div class="card-delete" >
+                  <div class="header-delete">
+  
+                    <div class="image-delete">
+                      <svg aria-hidden="true" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" stroke-linejoin="round" stroke-linecap="round"></path>
+                      </svg>
+                    </div>
+  
+                    <div class="content-delete">
+                       <span class="title">Disattiva account</span>
+                       <p class="message">Tutti i tuoi dati verranno permanentemente rimossi. L'azione non è reversibile e non può essere annullata. Desideri procedere?</p>
+                    </div>
+  
+                     <div class="actions-delete">
+                       <button class="desactivate" type="button" (click)="deleteAccount()">Disattiva</button>
+                       <button class="cancel" type="button" (click)="annulla()">Annulla</button>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+              
+
+            </div>
+            
+          </section>
+
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+

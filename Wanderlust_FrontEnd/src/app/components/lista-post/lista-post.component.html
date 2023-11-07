@@ -1,0 +1,190 @@
+<section id="wrapper">
+
+  <header class="page-header">
+    <h1 class="h1 page-title">
+      <span>I Racconti dei Viaggiatori</span>
+    </h1>
+  </header>
+
+  <div class="d-flex" style="align-items: center; padding-bottom: 30px;">
+
+    <!-- Filtri a sinistra -->
+    <div style="padding-left: 20px; display: flex; align-items: center;">
+      <button class="learn-more" (click)="openFilter()">
+        <span class="circle" aria-hidden="true">
+        <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">Search</span>
+      </button>
+    </div>
+
+    <!-- Spazio flessibile vuoto per separare i filtri dall'ordinamento -->
+    <div class="flex-grow-1"></div>
+
+    <!-- Ordinamento a destra -->
+    <div class="toolbar-sorter sorter">
+
+        <label class="sorter-label" for="sorter" >Ordina articoli per </label>
+
+        <select id="sorter" data-role="sorter" class="sorter-options" required [(ngModel)]="orderBy" (change)="ordinamentoPost(orderBy!)" style="margin-right: 20px;">
+            <option class="sorter-option" value="position" selected="selected">Posizione</option>
+            <option class="sorter-option" value="name">Titolo Articolo</option>
+            <option class="sorter-option" value="date">Data Inserimento</option>
+        </select>
+
+        <div *ngIf="!cresc" class="change-order" (click)="cambioOrdine(orderBy!)">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" style="padding-right: 20px;">
+              <path d="M151.6 42.4C145.5 35.8 137 32 128 32s-17.5 3.8-23.6 10.4l-88 96c-11.9 13-11.1 33.3 2 45.2s33.3 11.1 45.2-2L96 146.3V448c0 17.7 14.3 32 32 32s32-14.3 32-32V146.3l32.4 35.4c11.9 13 32.2 13.9 45.2 2s13.9-32.2 2-45.2l-88-96zM320 480h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H320c-17.7 0-32 14.3-32 32s14.3 32 32 32zm0-128h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H320c-17.7 0-32 14.3-32 32s14.3 32 32 32zm0-128H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H320c-17.7 0-32 14.3-32 32s14.3 32 32 32zm0-128H544c17.7 0 32-14.3 32-32s-14.3-32-32-32H320c-17.7 0-32 14.3-32 32s14.3 32 32 32z"/>
+            </svg>
+        </div>
+
+        <div *ngIf="cresc" style="cursor: pointer; display: contents; padding-right: 20px;" (click)="cambioOrdine(orderBy!)">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" style="padding-right: 20px;">
+              <path d="M151.6 469.6C145.5 476.2 137 480 128 480s-17.5-3.8-23.6-10.4l-88-96c-11.9-13-11.1-33.3 2-45.2s33.3-11.1 45.2 2L96 365.7V64c0-17.7 14.3-32 32-32s32 14.3 32 32V365.7l32.4-35.4c11.9-13 32.2-13.9 45.2-2s13.9 32.2 2 45.2l-88 96zM320 480c-17.7 0-32-14.3-32-32s14.3-32 32-32h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H320zm0-128c-17.7 0-32-14.3-32-32s14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H320zm0-128c-17.7 0-32-14.3-32-32s14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H320zm0-128c-17.7 0-32-14.3-32-32s14.3-32 32-32H544c17.7 0 32 14.3 32 32s-14.3 32-32 32H320z"/>
+            </svg>
+        </div>
+
+    </div>
+
+  </div>
+
+  <!-- Parte centrale Filtri/Post -->
+  <div class="filter-posts-container">
+
+    <div class="filters-column" *ngIf="espandiFiltri">
+
+      <div class="close-filter" aria-label="Chiudi Filtri" title="Chiudi Filtri">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" style="float: right; cursor: pointer;" (click)="closeFilter()">
+          <path d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM152 232H296c13.3 0 24 10.7 24 24s-10.7 24-24 24H152c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/>
+        </svg>
+      </div>
+
+      
+
+      <div class="containerSearch">
+        
+        <div class="labelSearch">
+          <strong>
+            Titolo
+          </strong>
+        </div>
+
+        <div class="form">
+          <input type="text" (ngModelChange)="ricercaPostPerTitolo(key.value)" #key="ngModel" ngModel
+           name="key" id="searchTitolo" class="input" placeholder="Ricerca per Titolo" required>
+          <span class="input-border"></span>
+        </div>
+
+      </div>
+
+      <div class="containerSearch">
+        
+        <div class="labelSearch">
+          <strong>
+            Autore
+          </strong>
+        </div>
+
+        <div class="form">
+            <input type="text" (ngModelChange)="ricercaPostPerAutore(key2.value)" #key2="ngModel" ngModel
+             name="key2" id="searchAutore" class="input" placeholder="Ricerca per Autore" required>
+             <span class="input-border"></span>
+        </div>
+
+      </div>
+
+      <div class="containerSearch">
+        
+        <div class="labelSearch">
+          <strong>
+            Categoria
+          </strong>
+        </div>
+
+        <div>
+          <form class="form-inline my-2 my-lg-0" style="display: inline;">
+              <select class="form-select custom-select" name="subject" aria-label="Subject" required [(ngModel)]="searchCategoria" id="selectCategoria">
+                <option value="" disabled selected hidden>Ricerca per Categoria</option>
+                <option value="" disabled selected >Seleziona una Categoria</option>
+                <ng-container *ngFor="let categoria of categorie">
+                  <option [ngValue]="categoria.nome_categoria">{{categoria!.nome_categoria}}</option>
+                </ng-container>
+              </select>
+          </form>
+        </div>
+
+        <div style="padding-top: 15px; text-align-last: center;">
+          <button class="fancy" (click)="ricercaPostPerCategoria(searchCategoria!)" >
+            <span class="top-key"></span>
+            <span class="text">Avvia Ricerca</span>
+            <span class="bottom-key-1"></span>
+            <span class="bottom-key-2"></span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="posts-column">
+      
+      <!-- Messaggio Nessun Post trovato -->
+      <div *ngIf="noPost" class="col-lg-12 col-md-12 col-xl-12" style="width: auto; padding-left: 40px; padding-right: 40px;">
+        <div class="alert alert-info" role="alert">
+          <h4 class="alert-heading">NESSUN ARTICOLO TROVATO!</h4>
+          <p>No Posts were found.</p>
+        </div>
+      </div>
+
+      <!-- tramite la angular class indichiamo che la classe cambia nel momento in cui no-posts diventa true
+      e noPost diventa true quando non ci sono posts da mostrare. -->
+      <div class="container" [ngClass]="{'no-posts': noPost}">
+        <div class="row">
+          <!-- paginate: Questa è la pipe di paginazione fornita dal modulo ngx-pagination. Una pipe è una funzione
+            che può essere utilizzata per trasformare i dati prima di visualizzarli. La pipe paginate gestisce la
+            suddivisione dei dati in pagine in base ai parametri specificati. L'oggetto che passiamo alla pipe è tra le {} -->
+          <div class="col-12 col-md-4" *ngFor="let post of (listaPost | paginate: { itemsPerPage: 9, currentPage: currentPage })!">
+
+            <div *ngIf="this.utente" id="contenutoBookmark">
+              <label class="ui-bookmark" 
+              [attr.aria-label]="post.isFavorite ? 'Rimuovi Post dai Preferiti' : 'Aggiungi Post ai Preferiti'"
+              [title]="titoloAria" (mouseenter)="updateBookmarkTooltip(post)">
+                <input type="checkbox" (change)="toggleBookmark(post)" [checked]="post.isFavorite" >
+                 <div class="bookmark"><!-- Icona-->
+                  <svg viewBox="0 0 32 32">
+                    <g>
+                      <path d="M27 4v27a1 1 0 0 1-1.625.781L16 24.281l-9.375 7.5A1 1 0 0 1 5 31V4a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4z"></path>
+                    </g>
+                  </svg>
+                  
+                </div>
+              </label>
+            </div>
+
+            <app-singolo-post [post]="post"></app-singolo-post>
+            
+            
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer class="pagination-container">
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+  </footer>
+
+</section>
+
+
+
+
+
+
+
+
+

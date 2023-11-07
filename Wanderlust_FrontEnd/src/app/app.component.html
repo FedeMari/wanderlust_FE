@@ -1,0 +1,19 @@
+<!-- Questo title serve per dirci che quanto scriviamo nel component.ts viene poi visualizzato qui.
+Inoltre se lo commentiamo possiamo vedere come sparisce da tutte le pagine, quindi qui abbiamo i 
+componenti fissi che vogliamo-->
+<!-- <h1 class="text-center">{{title}}</h1> -->
+
+<!-- Qui aggiungeremo header-->  
+<wanderlust-header></wanderlust-header>
+<!-- Qui metteremo la NavBar ossia la "barra di navigazione" con i pulsanti utili per navigare nel sito" -->
+
+<wanderlust-navbar></wanderlust-navbar>
+
+<!-- Il Router attraverso i routes quindi i path che gli passiamo di volta in volta 
+    (es. login, registrazione...) capisce quali sono i file "HTML" da sostituire di volta in volta 
+    e quindi caricare nella parte "centrale"-->
+
+<router-outlet></router-outlet>
+<wanderlust-footer></wanderlust-footer>
+
+

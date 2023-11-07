@@ -1,0 +1,77 @@
+.navbar{
+    /* Se definiamo una posizione di questo tipo, la navbar prevale sempre sugli altri componenti e viene sovrapposta */
+    /* position: absolute; */
+    width: 100%;
+    background-color: transparent;
+    padding: inherit;
+    border-style: ridge;
+    height: 50px;
+}
+
+.container-fluid{
+    background-color: rgb(174 217 208 / 32%);
+}
+.logo {
+    height: 3em;
+    width: auto;
+}
+
+.navbar-brand{
+    margin-right: 2px;
+    margin-left: 4px;
+
+}
+
+@keyframes line-grow {
+    0% {
+        width: 0;
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    50% {
+        width: 64%;
+        opacity: 0.6;
+        transform: scaleX(1);
+
+    }
+    100% {
+        width: 64%;
+        opacity: 0.8;
+        transform: scaleX(1);
+
+    }
+  }
+  
+  .animated-text {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .line {
+    position: absolute;
+    bottom: 8px;
+    left: 18%;
+    height: 1px;
+    width: 64%;
+    background-color: black;
+    animation: line-grow 10s infinite;
+    animation-delay: 0.5s;
+    transition: opacity 0.5s;
+  }
+
+  .logo-home{
+    margin-left: 20px;
+    margin-bottom: 3px;
+  }
+
+  .logo-adventures{
+    margin-left: 20px;
+    margin-bottom: 0px;
+  }
+
+  .nav-item:hover {
+    border: groove;
+  }
+  
+  
+  

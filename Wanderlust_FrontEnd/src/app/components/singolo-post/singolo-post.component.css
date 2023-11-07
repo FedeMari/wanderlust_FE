@@ -1,0 +1,145 @@
+#contenuto-post {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.card {
+    width: 330px; /* Modifica questa larghezza a tua scelta */
+    height: 530px;
+}
+
+.card-header{
+    height: 150px;
+    border-bottom-width: medium;
+}
+
+.card-img-top{
+    height: 160px;
+}
+
+.card-writer{
+    margin-top: 20px;
+    text-align: -webkit-right;
+    border-bottom-style: solid;
+    font-size: smaller;
+    font-family: math;
+}
+
+.card-title{
+    font-variant: petite-caps;
+    height: 50px;
+}
+
+/*  overflow: hidden;: Il testo che supera le dimensioni dell'elemento verrà nascosto e non sarà visibile 
+                        all'esterno della card. Questo assicura che il testo che va oltre il limite stabilito 
+                        non sarà visibile all'utente.
+
+    text-overflow: ellipsis;:   Se il testo all'interno dell'elemento supera il limite e viene nascosto, verrà 
+                                aggiunto "..." alla fine del testo visibile per indicare all'utente che il testo
+                                è troncato.  
+*/
+.card-text {
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.expand-link {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    /*color: rgb(46, 132, 207);*/
+    color: rgb(119, 171, 216);
+    padding: 2px 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.expand-link:hover {
+    text-decoration: underline;
+    color: rgb(46, 132, 207);
+}
+
+.badge-primary {
+    background-color: #6199d4;
+    color: #fff;
+}
+  
+.badge-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.badge-europa {
+    background-color: #fe7700;
+    color: #fff;
+}
+
+.badge-africa {
+    background-color: #ffc250;
+    color: #fff;
+}
+
+.badge-oceania {
+    background-color: #00fcc5;
+    color: #fff;
+}
+
+.badge-asia {
+    background-color: #ba0000;
+    color: #fff;
+}
+
+.badge-north-america {
+    background-color: #7624c2;
+    color: #fff;
+}
+
+.badge-south-america {
+    background-color: #ca8cc2;
+    color: #fff;
+}
+
+.badge-central-america {
+    background-color: #8c00ff;
+    color: #fff;
+}
+
+.badge-antartide {
+    background-color: #e4eae5;
+    color: #fff;
+}
+
+.card-category-tag {
+    float: right;
+    border-radius: 4px;
+    min-width: 80px;
+    text-align: center;
+    height: 26px;
+}
+
+.card-category-long {
+    min-width: 140px; /* categorie con testo lungo */
+}
+
+/* Sfondo sfocato quando l'utente non è loggato */
+.login-overlay {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 307vh;
+    background-color: rgba(255, 255, 255, 0.8); /* Regolare l'opacità */
+    backdrop-filter: blur(8px); /* livello di sfocatura */
+    z-index: 1000; /* sfondo sopra gli altri elementi */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;    
+  }
+  
+  .login-message {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+  }
+  

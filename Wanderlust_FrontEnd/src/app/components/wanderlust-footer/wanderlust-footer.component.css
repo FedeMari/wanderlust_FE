@@ -1,0 +1,12 @@
+.footer-bottom {
+    background-color: rgb(174 217 208 / 60%);
+    padding: 10px;
+    margin: 0;    
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    border-top-style: double;
+    /* Controlla la posizione del footer, però ovviamente se messa fixed rimane sul fondo della pagina, lasciando un vuoto, quindi va evitata */
+    position: static!important;
+}
+

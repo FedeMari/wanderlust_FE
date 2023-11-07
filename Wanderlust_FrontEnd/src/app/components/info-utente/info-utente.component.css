@@ -1,0 +1,207 @@
+html,
+body {
+  height: 100%;
+}
+
+#wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+.my-account-side-links {
+  flex-direction: column;
+}
+
+.my-account-side-links a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.h1{
+  margin-top: 18px;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--bs-heading-color);
+  font-size: 3.5rem;
+  border-top-style: dotted;
+}
+
+.container{
+  border-bottom-style: dotted;
+  padding-bottom: 80px;
+}
+
+.my-account-side-links a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.my-account-side-links a:hover {
+  background-color: transparent;
+}
+
+.my-account-side-links i {
+  margin-right: 5px;
+}
+
+.my-account-side-links .link-text {
+  display: inline;
+}
+
+
+.col-lg-4 {
+    flex: 0 0 auto;
+    width: 70%;
+}
+
+.link-text-info {
+  padding-left: 16px;
+}
+
+.link-text-delete {
+  padding-left: 26px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-footer {
+  margin-top: 30px;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 0.25em;
+}
+
+.registration-message {
+  background-color: rgba(76, 175, 80, 0.8);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px; /* Larghezza massima del messaggio */
+  width: 90%; /* Larghezza del messaggio */
+}
+
+.error-message {
+  background-color: rgba(175, 76, 76, 0.8);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px; /* Larghezza massima del messaggio */
+  width: 90%; /* Larghezza del messaggio */
+}
+
+
+/* Disattiva account */
+
+.card-delete {
+  position: absolute;
+  z-index: 9000;
+  border-radius: 0.5rem;
+  max-width: 290px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  margin-top: 75px;
+  margin-left: 450px;
+  
+}
+
+.header-delete {
+  padding: 1.25rem 1rem 1rem 1rem;
+  background-color: #ffffff;
+}
+
+.image-delete {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FEE2E2;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+}
+
+.image-delete svg {
+  color: #DC2626;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.content-delete {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.title {
+  color: #111827;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.message {
+  margin-top: 0.5rem;
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.actions-delete {
+  margin: 0.75rem 1rem;
+  background-color: #F9FAFB;
+}
+
+.desactivate {
+  display: inline-flex;
+  padding: 0.5rem 1rem;
+  background-color: #DC2626;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  border-color: transparent;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.cancel {
+  display: inline-flex;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid #D1D5DB;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.deleting{
+  position: absolute;
+  z-index: 9000;
+  backdrop-filter: blur(8px);
+  height: 70vh;
+}

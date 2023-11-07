@@ -1,0 +1,140 @@
+.header{
+    background-color: rgb(174, 217, 208);
+    padding: 20px;
+    margin: 0;
+    height: 65px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-family: fantasy;
+    border-bottom-style: double;
+}
+
+.logo {
+    height: 4em;
+    width: auto;
+}
+  
+.logout-button {
+    float: right;
+    margin-top: 25px;
+}
+
+.Login{
+    float: right;    
+    margin-top: 25px;
+}
+
+.btn-secondary:hover{background-color: rgba(0, 182, 103, 0.587);}
+
+.btn-secondary{
+    color: black;
+    /* per fare la trasparenza*/
+    /* background-color: rgba(0, 0, 0, 0); */
+    background-color:rgba(0, 0, 0, 0.15);
+    border: thin;
+    padding-top: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 4px;
+    font-family: fantasy;
+}
+
+.user{
+    display: inline; 
+    padding-right: 10px;
+}
+
+/* Style The Dropdown Button */
+.dropbtn {
+    background-color: rgb(174, 217, 208);
+    color: black;
+    padding: 3px;
+    padding-right: 50px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .dropbtn:hover{
+    text-decoration-line: underline;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: aliceblue;
+    border: groove;
+    min-width: 105px;
+    box-shadow: 16px -11px 16px 0px rgba(0,0,0,0.2);
+    z-index: 9999;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ffffff}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content-element {
+    cursor: pointer;
+    background-color: aliceblue;
+    padding: 10px 10px;
+  }
+
+  .dropdown-content-element:hover {background-color: #ffffff}
+
+  .logo_account{
+    padding-bottom: 2px;
+    padding-left: 9px;
+  }
+
+  .logo_articoli{
+    padding-bottom: 2px;
+    padding-left: 4px;
+  }
+
+  .logo_preferiti{
+    padding-bottom: 2px;
+    padding-left: 1px;
+  }
+
+  .logo_logout{
+    padding-left: 20px;
+  }
+
+  .bi{
+    padding-right: 5px;
+    padding-bottom: 2px;
+  }
+  
+  #siteName {
+    cursor: pointer;
+    border-bottom: solid;
+    margin-top: 5px; 
+    margin-left: 10px;
+    font-size: xx-large;
+    color: black;
+  }
+
+  a {
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+

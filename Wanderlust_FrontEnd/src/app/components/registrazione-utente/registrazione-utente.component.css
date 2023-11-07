@@ -1,0 +1,159 @@
+html,
+body {
+  height: 100%;
+}
+
+.registration-form {
+  height: 100vh; /* Imposta l'altezza della sezione del form al 100% dell'altezza della finestra del browser */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-signup {
+  max-width: 340px; /* Imposta la larghezza massima del form */
+  padding: 1rem;
+  font: initial;
+  background: linear-gradient(243deg, #e7d23e, #c3f6ff, #71b0c7, #23d5ab);
+	background-size: 500% 500%;
+	animation: gradient 15s ease infinite;
+	height: 85vh;
+  margin: auto; /* Centra il form orizzontalmente */
+  border-radius: 20px;
+  border-style: double;  
+  border-width: medium;  
+  
+}
+
+.form-signup input[type="email"] {
+  margin-bottom: -15px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signup input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#wrapper {
+  position: relative;
+}
+
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  z-index: -1; /* Imposta un valore negativo per far sì che il video sia di sfondo */
+  object-fit: cover;
+}
+
+#content-wrapper {
+  position: relative;
+  z-index: 1; /* Imposta un valore positivo per far sì che il contenuto del form sia sopra il video */
+}
+
+.btn{
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.btn-primary {
+  --bs-btn-bg: #26426c;
+  --bs-btn-hover-color: #000;
+  --bs-btn-border-color: #000000;
+  --bs-btn-hover-bg: #ebf3ff;
+}
+
+.mt-5 {
+  margin-top: 2rem!important;
+}
+
+.text-body-secondary {
+  color: rgb(0 0 0 / 75%)!important;
+}
+
+.g-3, .gx-3 {
+  --bs-gutter-x: 0rem;
+}
+
+#floatingNome {
+  width: 95%;
+}
+
+#floatingCognome {
+  width: 95%;
+}
+
+#floatingEmail {
+  width: 97.5%;
+}
+
+#floatingPassword {
+  width: 97.5%;
+}
+
+.w-100 {
+  width: 97.5%!important;
+}
+
+#inner-wrapper{
+  margin-left: -350px;
+}
+
+.hidden {
+  display: none;
+}
+
+.registration-message {
+  background-color: rgba(76, 175, 80, 0.8);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px; /* Larghezza massima del messaggio */
+  width: 90%; /* Larghezza del messaggio */
+}
+
+.error-message {
+  background-color: rgba(175, 76, 76, 0.8);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px; /* Larghezza massima del messaggio */
+  width: 90%; /* Larghezza del messaggio */
+}
+
+
+
+
+/* Comandi vari: 
+
+1) background: bottom; --> Rende trasparente lo schermo e prende il background sotto
+2) overflow: auto --> Mette a disposizione barra di scorrimento laterale
+
+
+
+*/

@@ -1,0 +1,525 @@
+html,
+body {
+  height: 100%;
+}
+
+.home-page {
+  height: 100vh; /* Imposta l'altezza della sezione del form al 100% dell'altezza della finestra del browser */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 118%;
+  opacity: 0.8;
+  z-index: -1; /* Imposta un valore negativo per far sì che il video sia di sfondo */
+  object-fit: cover;
+  padding-top: 115px;
+}
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#header-homepage {
+  position: relative;
+}
+
+#content-wrapper {
+  position: relative;
+  z-index: 1; /* Imposta un valore positivo per far sì che il contenuto del form sia sopra il video */
+}
+
+#inner-wrapper{
+  max-width: 100%;
+}
+
+
+/*CARD*/
+.card__btn {
+  color: #fff;
+  border: 3px solid rgba(255,255,255,0.5);
+  border-radius: 24px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 88px;
+  margin: 8px 2px 0;
+  opacity: 0.5;
+  padding: 10px;
+}
+
+.card__btn:hover {
+  opacity: 1.5;
+}
+
+.card__text-sm {
+  color: #fff;
+  font-size: 15px;
+  margin: 0;
+  padding: 16px 3px 8px;
+  position: relative;
+}
+.card__text-sm::before {
+  content: "";
+  background: #fff;
+  height: 1px;
+  width: 16px;
+  position: absolute;
+  top: 0;
+}
+.card__text-lg {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 1.2;
+  width: 100%;
+  margin: 0;
+}
+
+/*...large...*/
+.card-lg__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-right: 700px;
+  padding-bottom: 300px; 
+
+  .card__text-lg {
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 1.4px;
+  } 
+  .card__text-md {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    padding: 12px 3px 8px;
+    opacity: 0.5;
+  }
+  .card__text-sm {
+    font-size: 14px;
+  }
+  .card__text-sm::before {
+    width: 24px;
+    height: 2px;
+  }
+}
+
+/*...small...*/
+.card-sm__container {
+  height: 220px;
+  margin: 400px 0 0 -400px;
+  display: flex;
+  /* align-self: flex-end; */
+
+  justify-content: center;
+  align-items: flex-end;
+}
+.card-sm {
+  background: #ccc;
+  background-size: cover; 
+  background-position: center center;
+  box-shadow: inset 0 0 100vw 100vw rgba(0, 0, 0, 0.3),
+    0 16px 8px -8px rgba(0,0,0,0.4);
+  border-radius: 8px;
+  width: 137px;
+  height: calc(100% - 15px); 
+  margin: 30px 10px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  cursor: pointer;
+  transition: 0.3s ease;
+  justify-content: space-between;
+  align-items: center;
+  
+  &:hover {
+    transform: translateY(-10px);
+  }
+  
+  .card__text-sm { 
+    opacity: 0.8;
+  }
+  
+}
+
+/* FOOTER */
+
+.main-footer{
+  position: relative;
+  /* background: #1e2129; */
+  background: #16222A;
+  background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
+  background: linear-gradient(59deg, #3A6073, #16222A);
+}
+
+.footer-content{
+  position: relative;
+  padding: 85px 0px 80px 0px;
+}
+.footer-content:before{
+  position: absolute;
+  content: '';
+  background: url('/assets/Immagini/world-map.png');
+  width: 744px;
+  height: 365px;
+  top: 50px;
+  right: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.footer-content .logo-widget{
+  position: relative;
+  margin-top: -5px;
+}
+
+/* Questo per impostare la distanza tra le icone social e il fatto di stare in orizzontale */
+.footer-content .logo-widget .social-network li{
+  position: relative;
+  display: inline-block;
+  margin-right: 12px; 
+}
+
+/* Forma e colore e struttura dei social */
+.footer-content .logo-widget .footer-social li a{
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  background: #2e3138;
+  color: #9ea0a9;
+  text-align: center;
+  border-radius: 50%;
+}
+
+/* Colore sfondo icone */
+
+.social-network a.icoFacebook:hover {
+  background-color: #3B5998;
+}
+
+.social-network a.icoTwitter:hover {
+  background-color: #007bb7;
+}
+
+.social-network a.icoLinkedIn:hover {
+  background-color: #007bb7;
+}
+
+.social-network a.icoGoogle:hover {
+  background-color: #aa3b33;
+}
+
+
+
+/* Tiene in risalto il nome dell'icona */
+.social-network a.icoFacebook:hover i,
+.social-network a.icoTwitter:hover i,
+.social-network a.icoLinkedIn:hover i,
+.social-network a.icoGoogle:hover i {
+  color: #fff;
+}
+
+.social-circle li a {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto 0 auto;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.social-circle li i {
+  margin: 0;
+  line-height: 30px;
+  text-align: center;
+}
+
+/* Rotazione al passaggio sopra */
+.social-circle li a:hover i,
+.triggeredHover {
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -ms--transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+/* Se ci soffermiamo sulle icone compare il messaggio relativo a cosa si riferisce */
+.social-circle i {
+  color: #595959;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  -ms-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+/* Colore di background dei social senza passaggio del mouse */
+.social-network a {
+  background-color: #F9F9F9;
+}
+
+/* Necessario per rimuovere i puntini accanto agli elementi della lista */
+ul {
+  list-style-type: none;
+}
+
+
+.footer-content .logo-widget .logo-box{
+  margin-bottom: 25px;
+}
+.footer-content .logo-widget .text p{
+  color: #9ea0a9;
+  margin-bottom: 32px;
+}
+.footer-content .footer-title{
+  position: relative;
+  font-size: 24px;
+  line-height: 35px;
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 27px;
+}
+.footer-content .text p {
+  color: #9ea0a9;
+  margin-bottom: 32px;
+}
+.footer-content .service-widget .list li{
+  display: block;
+  margin-bottom: 12px;
+}
+.footer-content .service-widget .list li a{
+  position: relative;
+  display: inline-block;
+  color: #9ea0a9;
+}
+.footer-content .service-widget .list li a:hover{
+  color: #00bcd4;
+}
+.footer-content .contact-widget p{
+  color: #9ea0a9;
+  margin-bottom: 15px;
+}
+.footer-content .contact-widget{
+  margin-left: 90px;
+}
+.footer-content .contact-widget .footer-title{
+  margin-bottom: 29px;
+}
+
+.text{
+  position: relative;
+}
+
+.logo-box img {
+    max-width: 220px;
+}
+
+/* Inizio parte centrale, galleria immagini*/
+
+.center {
+  background-color: whitesmoke;
+}
+
+/* Quota */
+
+.quote-incipit {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  opacity: 0;
+  padding-left: 180px;
+  padding-top: 50px;
+}
+
+.quote-incipit.aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 3s;
+}
+
+.quote-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  opacity: 0;
+  padding-left: 500px;
+  padding-top: 20px;
+}
+
+.quote-text.aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 6s;
+}
+
+.quote-response {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  opacity: 0;
+  padding-left: 1030px;
+  padding-top: 20px;
+
+}
+
+.quote-response.aos-animate {
+  opacity: 0;
+  transform: translateY(0);
+  transition-duration: 4s;
+  animation: showQuoteResponse 3s ease 4s forwards; 
+}
+
+@keyframes showQuoteResponse {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Galleria */
+
+.gallery-container {
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.gallery-container h1 {
+  margin-top: 20px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.gallery-container p.page-description {
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+.tz-gallery {
+  padding: 40px;
+}
+
+/* Stile per le immagini della galleria */
+.tz-gallery .row {
+  margin-bottom: 30px;
+}
+
+.tz-gallery img {
+  width: 100%;
+  border-radius: 0;
+  transition: transform .3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.tz-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Stile per l'effetto di overlay */
+.tz-gallery .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tz-gallery .overlay:hover {
+  opacity: 1;
+}
+
+.tz-gallery .overlay a {
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.tz-gallery .overlay a:hover {
+  transform: scale(1.1);
+}
+
+/* ... Resto del codice ... */
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 70%;
+  max-height: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.lightbox:target {
+  display: block;
+}

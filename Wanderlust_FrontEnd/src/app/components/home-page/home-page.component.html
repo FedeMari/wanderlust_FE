@@ -1,0 +1,216 @@
+<section id="wrapper">
+    <div class="header-homepage">      
+      
+      <div id="video">
+        <video id="background-video" [src]="videoPath" type="video/mp4"  [muted]="'muted'" loop autoplay  >
+        </video>
+      </div>
+
+      <div id="inner-wrapper" class="container">
+        <div id="content-wrapper" class="js-content-wrapper">
+          <section id="main">
+            <div id="content" class="page-content">
+              <section class="home-page d-flex justify-content-center align-items-center">
+                
+                <div id="contenuto-uno">
+                  <section class="card-lg__container">
+                    <div class="card__content">
+                        <p class="card__text-sm">{{ selectedCard?.largeCardTitle }}</p>
+                        <h1 class="card__text-lg">{{ selectedCard?.largeCardText }}</h1>
+                        <p class="card__text-md">{{ selectedCard?.largeCardDescription }}</p>
+                        <a href="/listapost" class="card__btn ">Esplora</a>
+                    </div>
+                  </section>
+                </div>
+
+                <div id="contenuto-due">
+                  <section class="card-sm__container">
+                          
+                    <section class="card-sm" (click)="setSelectedCard(card1)" (click)="setVideoBackground('/assets/Video/Animal_Video_1.mp4')" style="background-image:url('/assets/Immagini/Deserto_1.jpg')">
+                      <p class="card__text-sm" id="Marocco-s">Sierra Desert - Marocco</p>
+                      <h1 class="card__text-lg" id="Marocco-m">Marrakech Merzouga</h1>
+                    </section>
+            
+                    <section class="card-sm" (click)="setSelectedCard(card2)" (click)="setVideoBackground('/assets/Video/Mare_Video_2.mp4')" style="background-image: url('/assets/Immagini/Blog_3.jpg'); background-position: center right;">
+                      <p class="card__text-sm" id="Bali-s">Bali - Indonesia</p>
+                      <h1 class="card__text-lg" id="Bali-m">Isola di Bali</h1>
+                    </section>
+            
+                    <section class="card-sm" (click)="setSelectedCard(card3)" (click)="setVideoBackground('/assets/Video/Niagara.mp4')" style="background-image: url('/assets/Immagini/Galleria_7.jpg')">
+                      
+                        <p class="card__text-sm" id="Niagara-s">Niagara Falls - USA</p>
+                        <h1 class="card__text-lg" id="Niagara-m" >Cascate del Niagara</h1>                      
+                                          
+                    </section>
+            
+                    <section class="card-sm" (click)="setSelectedCard(card4)" (click)="setVideoBackground('/assets/Video/Cappadocia_Video_1.mp4')" style="background-image: url('/assets/Immagini/Cappadocia_1.jpg')">
+                      <p class="card__text-sm" id="Turchia-s">Cappadocia - Turchia</p>
+                      <h1 class="card__text-lg" id="Turchia-m">Valle di Goreme</h1>
+                    </section>
+                    
+                  </section>
+                  
+                </div>
+
+              </section>
+            </div>
+          </section>
+        </div>
+      </div>        
+    </div>
+
+    <div class="center">
+      <div class="quote-container" style="display: flex; flex-direction: column;">
+
+        <div class="quote-incipit" data-aos="fade-up">
+          <h4 >"It's time for your next adventure!"</h4>
+        </div>
+        
+        <div class="quote-text" data-aos="fade-up">
+          <h4 >"I have no idea what I'm going to do Tomorrow."</h4>
+        </div>
+  
+        <div class="quote-response" data-aos="fade-up" >
+          <h4 >"How exciting."</h4>
+        </div>
+
+      </div>      
+
+      <div class="container gallery-container">
+        <div class="tz-gallery">
+          <div class="row">
+
+            <!-- Una lightbox è una tecnica utilizzata in web design per visualizzare immagini, video o altro 
+            contenuto multimediale in una finestra popup senza dover lasciare la pagina corrente.   -->
+            <!-- <div class="col-sm-12 col-md-4">
+              <a href="#lightbox1" class="lightbox-link">
+                <img src="/assets/Immagini/San_Francisco_1.jpg" alt="Bridge">
+              </a>
+            </div> -->
+
+            <div class="col-sm-8 col-md-8">
+              <img src="/assets/Immagini/San_Francisco_1.jpg" alt="Bridge">
+            </div>
+
+            <div class="col-sm-4 col-md-4">
+              <img src="/assets/Immagini/Machu_Picchu_1.jpg" alt="MachuPicchu">
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+              <img src="/assets/Immagini/Sydney_2.jpg" alt="Sydney">
+            </div>
+
+            <div class="col-sm-12 col-md-8" style="margin-top: 20px;">
+              <img src="/assets/Immagini/Blog_6.jpg" alt="Van">
+            </div>
+
+            <div class="col-sm-6 col-md-4" style="margin-top: 20px;">
+              <img src="/assets/Immagini/Header_7.jpg" alt="Coast">
+            </div> 
+
+            <div class="col-sm-2 col-md-4">
+              <img src="/assets/Immagini/Tokyo_2.jpg" alt="Tokyo">
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+              <img src="/assets/Immagini/Galleria_6.jpg" alt="Image">
+            </div>
+
+            <div class="col-sm-12 col-md-8" style="margin-top: 20px;">
+              <img src="/assets/Immagini/Blog_2.jpg" alt="Van">
+            </div>
+
+            <div class="col-sm-8 col-md-4" style="margin-top: 20px;">
+              <img src="/assets/Immagini/Header_2.jpg" alt="Coast">
+            </div> 
+
+            <div class="col-sm-4 col-md-6" style="margin-top: 20px;">
+              <img src="/assets/Immagini/Roma_1.jpg" alt="Tokyo">
+            </div>
+
+            <div class="col-sm-6 col-md-6" style="margin-top: 20px;">
+              <img src="/assets/Immagini/Services_4.jpg" alt="Se">
+            </div> 
+
+            <div class="col-sm-6 col-md-8" style="margin-top: 20px;">
+              <img src="/assets/Immagini/Blog_8.jpg" alt="Some">
+            </div>
+
+            <div class="col-sm-6 col-md-4" style="margin-top: 20px;">
+              <img src="/assets/Immagini/Galleria_2.jpg" alt="Some">
+            </div>
+
+          </div>           
+        </div>
+      </div>
+
+      <!-- <div class="lightbox" id="lightbox1">
+        <a href="#close" class="lightbox-close-btn">&times;</a>
+        <img src="assets/Immagini/San_Francisco_1.jpg" alt="Bridge">
+      </div> -->
+
+    </div>    
+
+    <footer class="main-footer">
+      <div class="container">
+          <div class="footer-content">
+              <div class="row">
+                  <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                      <div class="logo-widget footer-widget">
+                          
+                        <figure class="logo-box">
+                          <a href="#">
+                            <img src="/assets/Immagini/Wanderlust_Footer_2.png" alt="">
+                          </a>
+                        </figure>
+
+                        <div class="text">
+                          <p>Benvenuti nel nostro sito dedicato ai viaggi!<br>
+                            Qui troverete articoli entusiasmanti su destinazioni e avventure in tutto il mondo. Il nostro team di scrittori condivide consigli e ispirazioni per il vostro prossimo viaggio.<br>
+                            <br>
+                            Esplorate le nostre storie e iniziate a sognare, siamo qui per offrire novità, consigli pratici e suggerimenti preziosi per rendere i vostri viaggi straordinari. Unisciti a noi nel tuo percorso di scoperta e condividi la passione per il viaggio.</p>
+                        </div>
+
+                        <ul class="social-network social-circle">
+                          <!-- "fab": Sta per "Font Awesome Brands". Viene utilizzato per le icone dei marchi o dei social media -->
+                          <!-- "fa": Sta per "Font Awesome". Viene utilizzato per le icone generiche -->
+                          <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f" id="facebook"></i></a></li>
+                          <li><a href="#" class="icoTwitter" title="Twitter"><i class="fab fa-twitter" id="twitter"></i></a></li>
+                          <li><a href="#" class="icoLinkedIn" title="LinkedIn"><i class="fab fa-linkedin" id="linkedIn"></i></a></li>
+                          <li><a href="#" class="icoGoogle" title="Google"><i class="fab fa-google-plus-g" id="google"></i></a></li>
+                        </ul>
+
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 col-sm-12 offset-lg-2 footer-column">
+                      <div class="service-widget footer-widget">
+                          <div class="footer-title" style="padding-left: 33px;">Services</div>
+                          <ul class="list">
+                              <li><a href="/terminidiutilizzo">Terms of Service</a></li>
+                              <li><a href="/privacy">Privacy Policy</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  
+                  <div class="col-lg-3 col-md-6 col-sm-12 footer-widget">
+                      <div class="contact-widget footer-widget">
+                          <div class="footer-title">Contacts</div>
+                          <div class="text">
+                            <p>Wanderlust Italia Project</p>
+                            <p>by Federico Mari</p>
+                            <p>Viale Luigi Schiavonetti, 278/Palazzina E </p>
+                            <p>Tor Vergata - Roma (RM) 00173 - Italia</p>
+                            <p>+39 0123456789</p>
+                            <p>wanderlust.darkorbit.travel@gmail.com</p>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+    </footer>
+
+  </section>
+

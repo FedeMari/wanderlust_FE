@@ -1,0 +1,226 @@
+<section id="wrapper">
+    <div class="wrapper">
+
+        <header class="page-header">
+
+            <div class="name-page">
+                <h1 class="h1 page-title">
+                    <span >Diario di Viaggio</span>
+                </h1>
+            </div>
+
+            <div class="header-add-space" >
+                <button class="button-add" (click)="aggiuntaPost()" aria-label="Aggiungi un Post" title="Aggiungi un Post">
+                    <svg class="w-6 h-6" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" stroke-linejoin="round" stroke-linecap="round"></path>
+                    </svg>
+                    <span class="text">
+                      Carica un Articolo
+                    </span>
+                </button>
+            </div>
+
+        </header>        
+        
+        <div class="container" style="min-height: 100vh;">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 post-container" *ngFor="let post of (utente?.articoli! | paginate: { itemsPerPage: 6, currentPage: currentPage })!">
+
+                    <div class="menu-post">
+                        <input class="toggle-check" id="checkbox-post-{{post.id_post}}" type="checkbox" (click)="toggleMenuPost(post.id_post!)">
+                            <label class="toggle-post" for="checkbox-post-{{post.id_post}}">
+                                <div id="bar1" class="bars"></div>
+                                <div id="bar2" class="bars"></div>
+                                <div id="bar3" class="bars"></div>
+                            </label>
+                    </div>
+
+                    <div class="container-button" *ngIf="postMenuStatus[post.id_post!]">
+
+                        <!-- Edit -->
+                        <button class="btn-update" (click)="aggiornamentoPost(post)">
+                            <svg class="icon-update" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <g stroke="black" stroke-linecap="round" stroke-width="1.5">
+                                    <path d="m20 20h-16"></path>
+                                    <path clip-rule="evenodd" d="m14.5858 4.41422c.781-.78105 2.0474-.78105 2.8284 0 .7811.78105.7811 2.04738 0 2.82843l-8.28322 8.28325-3.03046.202.20203-3.0304z" id="Fill"></path>
+                                </g>
+                            </svg>
+                        </button>
+
+                        <!-- Delete -->
+                        <button class="btn-delete" (click)="eliminazionePost(post?.id_post)">
+                            <svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" class="icon-delete">
+                                <path transform="translate(-2.5 -1.25)" d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z" id="Fill"></path>
+                            </svg>
+                        </button>
+
+                    </div>
+
+                    <app-singolo-post [post]="post"></app-singolo-post>
+
+                </div>
+            </div>            
+        </div>
+        
+        <!--  gli <ng-container> non sono destinati a essere utilizzati per il posizionamento degli elementi sulla pagina.  -->
+        <!-- dobbiamo usare un div -->
+        <!-- Aggiornamento di un Post -->
+        <div class="overlay-container" *ngIf="activateUpdatePost">
+            <section class="card-lg__container">
+                <div class="card__content">
+                    <form (ngSubmit)="onSubmitUpdate()" class="row g-3" style="padding-top: 100px;">                       
+
+                        <div style="padding-bottom: 10px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" style="float: right; cursor: pointer;" (click)="closePopUp()">
+                                <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"/>
+                            </svg> 
+                            <br>
+                            <h3 class="h3 mb-3 fw-normal" style="display: inline; font-family: fantasy; font-size: xxx-large;">Aggiornamento Post</h3>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-floating" >
+                              <input type="text" class="form-control input-md" id="floatingTitolo" placeholder="Titolo" required [(ngModel)]="currentPost!.titolo" name="titolo" />
+                              <label for="floatingInput">Titolo</label>
+                            </div>
+                        </div>
+
+                        <div *ngIf="erroreTitolo" class="alert alert-danger">{{ messaggioErroreTitolo }}</div>
+
+                        <div>
+                            <editor
+                                apiKey="no-api-key"
+                                [disabled]="false"
+                                id="editor1"
+                                [init]="{ plugins: 'code help lists link table wordcount',
+                                          menubar: 'edit view insert format tools',
+                                          base_url: '/tinymce',
+                                          suffix: '.min',
+                                        }"
+                                [inline]="false"
+                                toolbar="bold italic underline | formatpainter | aligncenter alignleft alignright alignjustify | selectall | ltr rtl | code | help"
+                                required [(ngModel)]="currentPost!.contenuto"
+                                name="contenuto"
+                            ></editor>
+                        </div>
+
+                        <div *ngIf="erroreContenuto" class="alert alert-danger">{{ messaggioErroreContenuto }}</div>
+                        
+                        <strong>Inserisci una Categoria</strong>
+                        <select class="form-select" name="subject" aria-label="Subject" required [(ngModel)]="updatedCategoria" id="selectCategoria">
+                            <option value="" disabled selected >Seleziona una Categoria</option>
+                            <ng-container *ngFor="let categoria of categorie">
+                                <option [ngValue]="categoria">{{categoria!.nome_categoria}}</option>
+                            </ng-container>
+                        </select>
+
+                        <!-- Abbiamo rimosso l'aggiornamento per le immagini, in quanto le immagini devono essere
+                        gestite in modo separato, con possibilità di aggiunta, rimozione senza aggiornamento
+                        servirà quindi un tasto del tipo "aggiorna immagini" che permetterà all'utente sia di 
+                        rimuoverle che di aggiungerle. Il tutto dipende dalla chiave esterna di immagine, questa connette
+                        direttamente il post all'immagine e per aggiornare un'immagine, questa va rimossa.-->
+                        
+                        <div *ngIf="erroreCategoria" class="alert alert-danger">{{ messaggioErrore }}</div>
+                        
+                        <button class="btn btn-primary py-2" type="submit" value="updatingPost" style="margin-left: 7px; width: 96.5%;">Aggiorna</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Aggiunta di un Post -->
+        <div class="overlay-container" *ngIf="activateAddPost">
+            <section class="card-lg__container">
+                <div class="card__content">
+                    <form (ngSubmit)="onSubmitAdd()" class="row g-3" style="padding-top: 100px;">
+
+                        <div style="padding-bottom: 10px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" style="float: right; cursor: pointer" (click)="closePopUp()">
+                                <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"/>
+                            </svg> 
+                            <br>
+                            <h3 class="h3 mb-3 fw-normal" style="display: inline; font-family: fantasy; font-size: xxx-large;">Aggiungi un Post</h3>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-floating" >
+                                <input type="text" class="form-control input-md" id="floatingTitolo" placeholder="Titolo" required [(ngModel)]="newPost.titolo" name="titolo" />
+                                <label for="floatingInput">Titolo</label>
+                            </div>
+                        </div>
+
+                        <div *ngIf="erroreTitolo" class="alert alert-danger">{{ messaggioErroreTitolo }}</div>
+
+                        <!-- <div class="col-md-4">
+                            <div class="form-floating" >
+                              <textarea type="text" class="form-control input-md" id="floatingContenuto" placeholder="Contenuto" required [(ngModel)]="newPost.contenuto" name="contenuto"></textarea>
+                              <label for="floatingInput">Contenuto</label>
+                            </div>
+                        </div> -->
+
+                        <!-- Mia Chiave TinyMCE ysc2i8yqr8bdfxwco4fsu5tgyrr2t1igz9llljjyztconh2a -->
+                        <div>
+                            <editor
+                                apiKey="no-api-key" 
+                                [disabled]="false"
+                                id="editor1"
+                                [init]="{ plugins: 'code help lists link table wordcount',
+                                          menubar: 'edit view insert format tools',                                
+                                          base_url: '/tinymce',
+                                          suffix: '.min',
+                                        }"
+                                [inline]="false"
+                                toolbar="bold italic underline | formatpainter | aligncenter alignleft alignright alignjustify | selectall | ltr rtl | code | help"
+                                required [(ngModel)]="newPost.contenuto"
+                                name="contenuto"
+                            ></editor>
+                        </div>                        
+
+                        <div *ngIf="erroreContenuto" class="alert alert-danger">{{ messaggioErroreContenuto }}</div>
+
+                            <!-- Nel codice fornito, [(ngModel)]="newPost.categorie" collega l'elemento <select>
+                                 all'oggetto newPost.categorie nel componente. Ciò significa che quando viene 
+                                 selezionata un'opzione nell'elenco, il valore selezionato viene assegnato a 
+                                 newPost.categorie e viceversa. -->
+                                 <!-- D'altra parte, ngValue è utilizzata all'interno del tag <option> per assegnare
+                                     un valore specifico all'opzione. In questo caso, categoria è un oggetto 
+                                     all'interno dell'array categorie. ngValue consente di impostare categoria come 
+                                     valore dell'opzione, rendendo disponibile l'intero oggetto quando l'opzione 
+                                     viene selezionata. -->
+                        <strong>Inserisci una Categoria</strong>
+                        <select class="form-select" name="subject" aria-label="Subject" required [(ngModel)]="selectedCategory" id="selectCategoria">
+                            <option value="" disabled selected>Seleziona una Categoria</option>
+                            <ng-container *ngFor="let categoria of categorie">
+                                <option [ngValue]="categoria">{{categoria!.nome_categoria}}</option>
+                            </ng-container>
+                        </select>
+
+                        <div *ngIf="erroreCategoria" class="alert alert-danger">{{ messaggioErrore }}</div>
+
+                        <div class="col-md-4">
+                            <div class="form-floating" >
+                              <textarea type="text" class="form-control input-md" id="floatingImmagine" placeholder="Immagine" required [(ngModel)]="uploadedImageURL" name="contenuto"></textarea>
+                              <label for="floatingInput">WEB-URL Immagine</label>
+                            </div>
+                        </div>
+                        
+                        <div *ngIf="erroreImmagine" class="alert alert-danger">{{ messaggioErroreImmagine }}</div>
+                        
+                        <button class="btn btn-primary py-2" type="submit" value="addingPost" style="margin-left: 7px; width: 96.5%;">Aggiungi</button>
+                    </form>
+
+                </div>
+            </section>
+        </div>
+        
+        <div class="pagination-container">
+            <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
